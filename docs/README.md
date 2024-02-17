@@ -1,4 +1,4 @@
-# <img src="/package_icon.png" height="30px"> EnumConstraints.Fody
+# <img src="/docs/package_icon.png" height="30px"> EnumConstraints.Fody
 
 [![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg)](https://gitter.im/Fody/Fody)
 [![NuGet Status](https://img.shields.io/nuget/v/EnumConstraints.Fody.svg)](https://www.nuget.org/packages/Janitor.Fody/)
