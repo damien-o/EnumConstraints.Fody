@@ -6,7 +6,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<LangVersion>10.0</LangVersion>
 		<PackageId>EnumConstraints.Fody</PackageId>
-		<Version>0.0.1</Version>
+		<Version>0.0.3</Version>
 		<PackageDescription>Validates enum property value</PackageDescription>
 		<Authors>Damien O</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
