@@ -1,11 +1,11 @@
-# <img src="/docs/package_icon.png" height="30px"> EnumConstraints.Fody
+# <img src="https://raw.githubusercontent.com/damien-o/EnumConstraints.Fody/main/docs/package_icon.png" height="30px"> EnumConstraints.Fody
 
 [![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg)](https://gitter.im/Fody/Fody)
 [![NuGet Status](https://img.shields.io/nuget/v/EnumConstraints.Fody.svg)](https://www.nuget.org/packages/Janitor.Fody/)
 
 Validates enum property value.
 
-**See [Milestones](../../milestones?state=closed) for release notes.**
+**See [Milestones](https://github.com/damien-o/EnumConstraints.Fody/milestones?state=closed) for release notes.**
 
 
 ### This is an add-in for [Fody](https://github.com/Fody/Home/)
