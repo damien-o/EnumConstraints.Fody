@@ -122,4 +122,4 @@ public class Sample
 ```
 
 ## Icon
-[Checklist](https://www.onlinewebfonts.com/icon/464401) designed by [>Web Fonts](http://www.onlinewebfonts.com).
+[Checklist](https://www.onlinewebfonts.com/icon/464401) designed by [Web Fonts](http://www.onlinewebfonts.com).
