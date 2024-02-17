@@ -48,22 +48,30 @@ Add `<EnumConstraints/>` to [FodyWeavers.xml](https://github.com/Fody/Home/blob/
  * Replaces orginal implementations with the new ones.
  * The new implementations are using the originals implementations under the hood
 
-#### The typed Code
+## Behavior
 
 ```cs
-
 public enum Status
 {
+    Value1,
+    Value2,
 }
 
-public class Sample 
+public class Sample
 {
     public Status Status { get; set;}
 }
+
+var sample = new();
+
+sample.Status = Status.Value1; // Valid
+
+sample.Status = (Status)10; // Throws an InvalidEnumValueException
 ```
 
+## How it works
 
-#### The lowered code
+### The orginal lowered code
 ```cs
 public class Sample
 {
@@ -85,7 +93,8 @@ public class Sample
     }
 }
 ```
-#### What gets compiled
+
+### What gets compiled
 ```cs
 public class Sample 
 {
