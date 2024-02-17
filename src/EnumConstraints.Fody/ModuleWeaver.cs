@@ -1,34 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using Fody;
 
-namespace EnumConstraints.Fody;
-
-public partial class ModuleWeaver : BaseModuleWeaver
+namespace EnumConstraints.Fody
 {
-    public override void Execute()
+    public partial class ModuleWeaver : BaseModuleWeaver
     {
-        var allTypes = ModuleDefinition.GetTypes().Where(t => t.IsClass).ToArray();
-
-        var processor = new ClassProcessor(ModuleDefinition);
-        foreach (var typeDefinition in allTypes)
+        public override void Execute()
         {
-            foreach (var propertyDefinition in typeDefinition.Properties)
+            var properties = bool.Parse(Config?.Attribute("Properties")?.Value ?? "true");
+
+            if (!properties)
+                return;
+
+            var allTypes = ModuleDefinition.GetTypes().Where(t => t.IsClass).ToArray();
+
+            var processor = new ClassProcessor(ModuleDefinition);
+            foreach (var typeDefinition in allTypes)
             {
-                processor.Process(typeDefinition, propertyDefinition);
+                foreach (var propertyDefinition in typeDefinition.Properties)
+                {
+                    processor.ProcessProperties(typeDefinition, propertyDefinition);
+                }
             }
         }
-    }
 
-    public override IEnumerable<string> GetAssembliesForScanning()
-    {
-        /// return Array.Empty<string>();
-        return new[] { typeof(InvalidEnumValueException).Assembly.FullName! };
+        public override IEnumerable<string> GetAssembliesForScanning()
+        {
+            return Array.Empty<string>();
+        }
     }
 }
