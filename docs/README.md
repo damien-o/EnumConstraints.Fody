@@ -1,4 +1,4 @@
-# ![EnumConstraints.Fody logo](https://raw.githubusercontent.com/damien-o/EnumConstraints.Fody/main/docs/package_icon_50.png"Title") EnumConstraints.Fody
+# ![EnumConstraints.Fody logo](https://raw.githubusercontent.com/damien-o/EnumConstraints.Fody/main/docs/package_icon_.png) EnumConstraints.Fody
 
 
 [![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg)](https://gitter.im/Fody/Fody)
