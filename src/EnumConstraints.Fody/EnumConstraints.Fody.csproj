@@ -9,11 +9,11 @@
 		<Version>0.0.1</Version>
 		<PackageDescription>Validates enum property value</PackageDescription>
 		<Authors>Damien O</Authors>
-		<RepositoryUrl>https://github.com/damien-o/EnumConstraints</RepositoryUrl>
+		<RepositoryUrl>https://github.com/damien-o/EnumConstraints.Fody</RepositoryUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PublishUrl>https://github.com/damien-o/EnumConstraints</PublishUrl>
+		<PublishUrl>https://github.com/damien-o/EnumConstraints.Fody</PublishUrl>
 		<PackageIcon>package_icon.png</PackageIcon>
 	</PropertyGroup>
 
