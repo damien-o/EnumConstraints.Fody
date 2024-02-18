@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
@@ -22,6 +23,8 @@ namespace EnumConstraints.Fody
             PropertyDefinition propertyDefinition
         )
         {
+            if (!CanOverrideBehavior(propertyDefinition))
+                return;
             if (propertyDefinition.SetMethod.HasBody)
             {
                 AddSetDecorator(typeDefinition, propertyDefinition);
@@ -99,6 +102,33 @@ namespace EnumConstraints.Fody
             typeDefinition.Methods.Add(newSetMethod);
 
             property.SetMethod = newSetMethod;
+        }
+
+        private static bool CanOverrideBehavior(PropertyDefinition propertyDefinition)
+        {
+            var propertyType = propertyDefinition.PropertyType.Resolve();
+            if (propertyType is null)
+                return false;
+
+            if (
+                propertyDefinition.PropertyType is GenericInstanceType instance
+                && propertyType.FullName == "System.Nullable`1"
+            )
+            {
+                propertyType = instance.GenericArguments[0].Resolve();
+            }
+
+            if (!propertyType.IsEnum)
+                return false;
+
+            if (
+                propertyType.CustomAttributes.Any(ca =>
+                    ca.AttributeType.FullName == typeof(FlagsAttribute).FullName
+                )
+            )
+                return false;
+
+            return true;
         }
     }
 }

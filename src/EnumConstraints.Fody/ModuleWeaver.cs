@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Fody;
+using Mono.Cecil;
+using Mono.Cecil.Rocks;
 
 namespace EnumConstraints.Fody
 {
