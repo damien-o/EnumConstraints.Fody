@@ -103,28 +103,28 @@ public class Sample
 
     public Status Status
     {
-        get; // Calls get_ConstraintStatus
-        set; // Calls set_ConstraintStatus
+        get; // Calls get_Status
+        set; // Calls set_Status
     }
 
-    public Status get_ConstraintStatus()
+    public Status get_Status()
     {
-        var value = getStatus();
+        var value = get_Status_Unchecked();
         InvalidEnumValueException.ThrowIfInvalid(value);
         return value;
     }
 
-    public void set_ConstraintStatus(Status value)
+    public void set_Status(Status value)
     {
         InvalidEnumValueException.ThrowIfInvalid(value);
-        set_Status(value);
+        set_Status_Unchecked(value);
     }
 
-    public Status get_Status
+    public Status get_Status_Unchecked
     {
         return <Status>k__BackingField;
     }
-    public void set_Status(Status value)
+    public void set_Status_Unchecked(Status value)
     {
         <Status>k__BackingField = value;
     }

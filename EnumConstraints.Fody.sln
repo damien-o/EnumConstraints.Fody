@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		docs\LICENSE = docs\LICENSE
 		docs\README.md = docs\README.md
 	EndProjectSection
@@ -19,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyToProcess", "tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyToProcess.Extensions", "tests\AssemblyToProcess.Extensions\AssemblyToProcess.Extensions.csproj", "{5EF8D540-F533-47F2-AAC0-50E1F2D1A76E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumConstraints", "src\EnumConstraints\EnumConstraints.csproj", "{B3A34F26-765F-4114-AA8A-D6C91FFB2D8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumConstraints", "src\EnumConstraints\EnumConstraints.csproj", "{B3A34F26-765F-4114-AA8A-D6C91FFB2D8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

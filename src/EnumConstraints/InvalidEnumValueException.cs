@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EnumConstraints.Fody
+namespace EnumConstraints
 {
     /// <summary>
     /// Custom exception class to handle cases where an invalid enum value is encountered
@@ -11,10 +11,10 @@ namespace EnumConstraints.Fody
         /// Constructor to initialize the exception with the invalid enum value and its type
         /// </summary>
         /// <param name="value">Enum value</param>
-        /// <param name="enumType">Enum type</param>
-        public InvalidEnumValueException(Enum? value, Type enumType)
+        /// <param name="type">Enum type</param>
+        public InvalidEnumValueException(Enum? value, Type type)
         {
-            EnumType = enumType;
+            EnumType = type;
             EnumValue = value;
         }
 

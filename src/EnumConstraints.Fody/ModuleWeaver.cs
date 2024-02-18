@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Fody;
 using Mono.Cecil;
-using Mono.Cecil.Rocks;
 
 namespace EnumConstraints.Fody
 {
@@ -12,13 +11,21 @@ namespace EnumConstraints.Fody
         public override void Execute()
         {
             var properties = bool.Parse(Config?.Attribute("Properties")?.Value ?? "true");
-
+            var log = bool.Parse(Config?.Attribute("Log")?.Value ?? "false");
             if (!properties)
                 return;
+            var invalidEnumValueExceptionType = FindTypeDefinition(
+                "EnumConstraints.InvalidEnumValueException"
+            );
 
             var allTypes = ModuleDefinition.GetTypes().Where(t => t.IsClass).ToArray();
 
-            var processor = new ClassProcessor(ModuleDefinition);
+            var processor = new ClassProcessor(
+                this,
+                log,
+                ModuleDefinition,
+                invalidEnumValueExceptionType
+            );
             foreach (var typeDefinition in allTypes)
             {
                 foreach (var propertyDefinition in typeDefinition.Properties)
@@ -28,9 +35,11 @@ namespace EnumConstraints.Fody
             }
         }
 
+        public override bool ShouldCleanReference => false;
+
         public override IEnumerable<string> GetAssembliesForScanning()
         {
-            return Array.Empty<string>();
+            yield return "EnumConstraints";
         }
     }
 }

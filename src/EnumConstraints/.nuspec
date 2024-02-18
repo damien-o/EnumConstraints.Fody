@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	<metadata>
+		<version>0.1.0</version>
+		<id>EnumConstraints.Fody</id>
+		<title>EnumConstraints.Fody</title>
+		<authors>Damien O</authors>
+		<owners>Damien O</owners>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<licenseUrl>https://github.com/damien-o/EnumConstraints.Fody/blob/main/docs/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/damien-o/EnumConstraints.Fody/</projectUrl>
+		<iconUrl>https://github.com/damien-o/EnumConstraints.Fody/blob/main/docs/package_icon.png</iconUrl>
+		<description>Validates enum property value.</description>
+		<summary>
+			Looks for all classes with Properties.
+			Generates a new implementations of Set and Get methods.
+			Replaces orginal implementations with the new ones.
+			The new implementations are using the originals implementations under the hood
+		</summary>
+		<releaseNotes></releaseNotes>
+		<copyright>2024</copyright>
+		<language></language>
+		<dependencies>
+			<group targetFramework=".NETStandard2.1" />
+			<group targetFramework=".NETStandard2.0" />
+			<group targetFramework=".NET4.8" />
+			<group targetFramework=".NET6.0" />
+			<group targetFramework=".NET7.0" />
+			<group targetFramework=".NET8.0" />
+		</dependencies>
+	</metadata>
+</package>

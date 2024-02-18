@@ -2,6 +2,11 @@
 
 public class Model
 {
-    public string? Text { get; set; }
-    public StringComparison? Comparison { get; set; }
+    public EnumValue Value { get; set; }
+}
+
+public enum EnumValue
+{
+    Value1 = 1,
+    Value2 = 2,
 }

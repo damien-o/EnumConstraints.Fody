@@ -1,13 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0;netstandard2.1;netstandard2.0</TargetFrameworks>
+		<Version>0.1.0</Version>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net48;netstandard2.0;netstandard2.1</TargetFrameworks>
 		<ImplicitUsings>false</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<LangVersion>10.0</LangVersion>
 		<PackageId>EnumConstraints.Fody</PackageId>
-		<Version>0.0.7</Version>
 		<PackageDescription>Validates enum property value</PackageDescription>
 		<Authors>Damien O</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -20,9 +19,10 @@
 		<SupportUrl>$(PublishUrl)</SupportUrl>
 		<PackageProjectUrl>$(PublishUrl)</PackageProjectUrl>
 		<Copyright>2024</Copyright>
+		<RepositoryType>git</RepositoryType>
 		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<None Include="..\..\docs\package_icon.png" Pack="true" PackagePath="\" />
 		<None Include="..\..\docs\README.md" Pack="true" PackagePath="\" />
@@ -31,5 +31,4 @@
 		<PackageReference Include="Fody" Version="6.8.0" PrivateAssets="none" />
 		<PackageReference Include="FodyPackaging" Version="6.8.0" PrivateAssets="All" />
 	</ItemGroup>
-
 </Project>

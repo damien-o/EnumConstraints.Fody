@@ -1,22 +1,41 @@
 ﻿using System;
 using System.Linq;
-using EnumConstraints;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using Mono.Cecil.Rocks;
 
 namespace EnumConstraints.Fody
 {
     internal class ClassProcessor
     {
         private readonly MethodReference _throwIfInvalid;
+        private readonly ModuleWeaver _moduleWeaver;
+        private readonly bool _log;
 
-        public ClassProcessor(ModuleDefinition module)
+        public ClassProcessor(
+            ModuleWeaver moduleWeaver,
+            bool log,
+            ModuleDefinition module,
+            TypeDefinition invalidEnumValueExceptionType
+        )
         {
-            _throwIfInvalid = module.ImportReference(
-                typeof(InvalidEnumValueException)
-                    .GetMethods()
-                    .Single(m => m.Name == nameof(InvalidEnumValueException.ThrowIfInvalid))
-            );
+            if (invalidEnumValueExceptionType is null)
+                throw new TypeLoadException(
+                    "Can't find typeDef: EnumConstraints.InvalidEnumValueException"
+                );
+            var type = module.ImportReference(invalidEnumValueExceptionType).Resolve();
+            if (type is null)
+                throw new TypeLoadException(
+                    "Can't resolve type: EnumConstraints.InvalidEnumValueException"
+                );
+            var method = type.GetMethods().FirstOrDefault(m => m.Name == "ThrowIfInvalid");
+            if (method is null)
+                throw new TypeLoadException(
+                    "Can't find method: EnumConstraints.InvalidEnumValueException.ThrowIfInvalid"
+                );
+            _throwIfInvalid = module.ImportReference(method);
+            _moduleWeaver = moduleWeaver;
+            _log = log;
         }
 
         internal void ProcessProperties(
@@ -25,14 +44,38 @@ namespace EnumConstraints.Fody
         )
         {
             if (!CanOverrideBehavior(propertyDefinition))
+            {
                 return;
+            }
+            bool getter = false;
+            bool setter = false;
             if (propertyDefinition.SetMethod.HasBody)
             {
                 AddSetDecorator(typeDefinition, propertyDefinition);
+                setter = true;
             }
             if (propertyDefinition.GetMethod.HasBody)
             {
                 AddGetDecorator(typeDefinition, propertyDefinition);
+                getter = true;
+            }
+            if (!_log)
+                return;
+
+            var prop = $"{typeDefinition.FullName}.{propertyDefinition.Name}";
+            if (getter && setter)
+            {
+                _moduleWeaver.WriteWarning($"Add getter and setter check on {prop}");
+                return;
+            }
+            if (getter)
+            {
+                _moduleWeaver.WriteWarning($"Add getter check on {prop}");
+                return;
+            }
+            if (setter)
+            {
+                _moduleWeaver.WriteWarning($"Add setter check on {prop}");
             }
         }
 
@@ -41,10 +84,12 @@ namespace EnumConstraints.Fody
             var getMethod = property.GetMethod;
 
             var newGetMethod = new MethodDefinition(
-                "get_Constraint" + getMethod.Name,
+                getMethod.Name,
                 getMethod.Attributes,
                 getMethod.ReturnType
             );
+
+            getMethod.Name += "_Unchecked";
 
             var il = newGetMethod.Body.Instructions;
 
@@ -67,9 +112,10 @@ namespace EnumConstraints.Fody
 
             // return tempVar
             il.Add(Instruction.Create(OpCodes.Ldloc, tempVar));
-            il.Add(Instruction.Create(OpCodes.Ret));
-            typeDefinition.Methods.Add(newGetMethod);
 
+            il.Add(Instruction.Create(OpCodes.Ret));
+
+            typeDefinition.Methods.Add(newGetMethod);
             property.GetMethod = newGetMethod;
         }
 
@@ -78,14 +124,21 @@ namespace EnumConstraints.Fody
             var setMethod = property.SetMethod;
 
             var newSetMethod = new MethodDefinition(
-                "set_Constraint" + setMethod.Name,
+                setMethod.Name,
                 setMethod.Attributes,
                 setMethod.ReturnType
             );
 
+            setMethod.Name += "_Unchecked";
             var valueParameter = setMethod.Parameters[0];
 
-            newSetMethod.Parameters.Add(new ParameterDefinition(valueParameter.ParameterType));
+            newSetMethod.Parameters.Add(
+                new ParameterDefinition(
+                    "uncheckedEnumValue",
+                    ParameterAttributes.None,
+                    valueParameter.ParameterType
+                )
+            );
 
             var il = newSetMethod.Body.Instructions;
 
@@ -100,8 +153,8 @@ namespace EnumConstraints.Fody
             il.Add(Instruction.Create(OpCodes.Call, property.SetMethod));
 
             il.Add(Instruction.Create(OpCodes.Ret));
-            typeDefinition.Methods.Add(newSetMethod);
 
+            typeDefinition.Methods.Add(newSetMethod);
             property.SetMethod = newSetMethod;
         }
 

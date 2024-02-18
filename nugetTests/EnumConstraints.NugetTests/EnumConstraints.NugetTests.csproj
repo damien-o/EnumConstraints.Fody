@@ -7,10 +7,13 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+	<DisableFody>true</DisableFody>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EnumConstraints.Fody" Version="0.0.30" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
+
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.2.1" />

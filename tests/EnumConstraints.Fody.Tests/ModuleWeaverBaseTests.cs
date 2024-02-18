@@ -5,11 +5,14 @@ using TestResult = Fody.TestResult;
 
 namespace EnumConstraints.Fody.Tests;
 
-[TestClass]
 public class ModuleWeaverBaseTests
 {
+    protected ModuleWeaverBaseTests() { }
+
 #if (NET46)
-    static TestResult testResult = new ModuleWeaver().ExecuteTestRun("AssemblyToProcess.dll");
+    protected static readonly TestResult testResult = new ModuleWeaver().ExecuteTestRun(
+        "AssemblyToProcess.dll"
+    );
 #else
     protected static readonly TestResult testResult = new ModuleWeaver().ExecuteTestRun(
         "AssemblyToProcess.dll",

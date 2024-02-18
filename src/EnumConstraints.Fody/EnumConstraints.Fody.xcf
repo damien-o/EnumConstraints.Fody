@@ -1,0 +1,12 @@
+﻿<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:attribute name="Properties" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicates if the setters and getters properties should check the enum value. Default is true.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="Log" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicates if the Weaver should altered properties in the build console. Default is false.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:complexType>
