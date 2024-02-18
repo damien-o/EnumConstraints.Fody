@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AssemblyToProcess.Extensions\AssemblyToProcess.Extensions.csproj" />
+    <PackageReference Include="EnumConstraints.Fody" Version="0.0.6" />
   </ItemGroup>
 
 </Project>

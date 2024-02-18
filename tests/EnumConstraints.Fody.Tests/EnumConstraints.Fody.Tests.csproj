@@ -25,7 +25,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\EnumConstraints.Fody\EnumConstraints.Fody.csproj" />
-	  <ProjectReference Include="..\..\src\EnumConstraints\EnumConstraints.csproj" />
 	  <ProjectReference Include="..\AssemblyToProcess.Extensions\AssemblyToProcess.Extensions.csproj" />
 	  <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj" />
 	</ItemGroup>

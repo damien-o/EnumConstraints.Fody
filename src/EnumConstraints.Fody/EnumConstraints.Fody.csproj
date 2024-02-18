@@ -1,24 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;netstandard2.1;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0;netstandard2.1;netstandard2.0</TargetFrameworks>
 		<ImplicitUsings>false</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<LangVersion>10.0</LangVersion>
-		<PackageId>EnumConstraints.Fody</PackageId>
-		<Version>0.0.4</Version>
-		<PackageDescription>Validates enum property value</PackageDescription>
-		<Authors>Damien O</Authors>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<PackageIcon>package_icon.png</PackageIcon>
-		<PublishUrl>https://github.com/damien-o/EnumConstraints.Fody</PublishUrl>
-		<RepositoryUrl>$(PublishUrl)</RepositoryUrl>
-		<SupportUrl>$(PublishUrl)</SupportUrl>
-		<PackageProjectUrl>$(PublishUrl)</PackageProjectUrl>
-		<Copyright>2024</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,10 +12,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="FodyHelpers" Version="6.8.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\EnumConstraints\EnumConstraints.csproj" />
 	</ItemGroup>
 
 </Project>

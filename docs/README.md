@@ -114,10 +114,10 @@ public class Sample
         return value;
     }
 
-    public Status get_ConstraintStatus(Status value)
+    public void set_ConstraintStatus(Status value)
     {
         InvalidEnumValueException.ThrowIfInvalid(value);
-        return set_Status(value);
+        set_Status(value);
     }
 
     public Status get_Status

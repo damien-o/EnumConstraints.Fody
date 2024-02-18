@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using EnumConstraints;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 
