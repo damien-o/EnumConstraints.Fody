@@ -22,7 +22,18 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore EnumConstraints.Fody.sln
+      
     - name: Build
       run: dotnet build --no-restore EnumConstraints.Fody.sln
+
     - name: Test
-      run: dotnet test --no-build --verbosity normal EnumConstraints.Fody.sln
+      run:  dotnet-coverage collect dotnet test --no-build --verbosity normal ./tests/EnumConstraints.Fody.Tests/EnumConstraints.Fody.Tests.csproj
+    
+    - name: Create code coverage report
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        dotnet-coverage merge -f cobertura .\output.coverage
+        reportgenerator -reports:./output.cobertura.xml -targetdir:CodeCoverage -reporttypes:'MarkdownSummaryGithub;Cobertura' -verbosity Off -assemblyfilters:'+EnumConstraints.Fody;+EnumConstraints'
+        cat CodeCoverage/SummaryGithub.md >> $GITHUB_STEP_SUMMARY  
+
+

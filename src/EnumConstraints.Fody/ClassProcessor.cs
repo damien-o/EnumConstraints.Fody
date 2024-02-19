@@ -43,18 +43,23 @@ namespace EnumConstraints.Fody
             PropertyDefinition propertyDefinition
         )
         {
+            if (typeDefinition is null)
+                return;
+
+            if (propertyDefinition is null)
+                return;
             if (!CanOverrideBehavior(propertyDefinition))
             {
                 return;
             }
             bool getter = false;
             bool setter = false;
-            if (propertyDefinition.SetMethod.HasBody)
+            if (propertyDefinition.SetMethod?.HasBody ?? false)
             {
                 AddSetDecorator(typeDefinition, propertyDefinition);
                 setter = true;
             }
-            if (propertyDefinition.GetMethod.HasBody)
+            if (propertyDefinition.GetMethod?.HasBody ?? false)
             {
                 AddGetDecorator(typeDefinition, propertyDefinition);
                 getter = true;
@@ -160,7 +165,7 @@ namespace EnumConstraints.Fody
 
         private static bool CanOverrideBehavior(PropertyDefinition propertyDefinition)
         {
-            var propertyType = propertyDefinition.PropertyType.Resolve();
+            var propertyType = propertyDefinition.PropertyType?.Resolve();
             if (propertyType is null)
                 return false;
 
@@ -171,7 +176,8 @@ namespace EnumConstraints.Fody
             {
                 propertyType = instance.GenericArguments[0].Resolve();
             }
-
+            if (propertyType is null)
+                return false;
             if (!propertyType.IsEnum)
                 return false;
 

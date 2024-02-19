@@ -14,24 +14,33 @@ namespace EnumConstraints.Fody
             var log = bool.Parse(Config?.Attribute("Log")?.Value ?? "false");
             if (!properties)
                 return;
-            var invalidEnumValueExceptionType = FindTypeDefinition(
-                "EnumConstraints.InvalidEnumValueException"
-            );
-
-            var allTypes = ModuleDefinition.GetTypes().Where(t => t.IsClass).ToArray();
-
-            var processor = new ClassProcessor(
-                this,
-                log,
-                ModuleDefinition,
-                invalidEnumValueExceptionType
-            );
-            foreach (var typeDefinition in allTypes)
+            try
             {
-                foreach (var propertyDefinition in typeDefinition.Properties)
+                var invalidEnumValueExceptionType = FindTypeDefinition(
+                    "EnumConstraints.InvalidEnumValueException"
+                );
+
+                var allTypes = ModuleDefinition.GetTypes().Where(t => t.IsClass).ToArray();
+
+                var processor = new ClassProcessor(
+                    this,
+                    log,
+                    ModuleDefinition,
+                    invalidEnumValueExceptionType
+                );
+                foreach (var typeDefinition in allTypes)
                 {
-                    processor.ProcessProperties(typeDefinition, propertyDefinition);
+                    foreach (var propertyDefinition in typeDefinition.Properties)
+                    {
+                        processor.ProcessProperties(typeDefinition, propertyDefinition);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                if (!log)
+                    throw;
+                WriteError(ex.ToString());
             }
         }
 
