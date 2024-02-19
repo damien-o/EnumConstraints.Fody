@@ -3,8 +3,8 @@
 
 
 output.cobertura.xml
+*.lutconfig
 /CodeCoverage
-
 ### DotnetCore ###
 # .NET Core build folders
 bin/

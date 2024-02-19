@@ -22,6 +22,9 @@ public class Mixin
     public string? Other { get; set; }
     public int? NullableInteger { get; set; }
     public int Integer { get; set; }
+
+    public virtual StatusAsInt64 Vritual { get; set; }
+    public virtual List<int> OtherVritual { get; set; } = new();
 }
 
 #pragma warning restore S1104 // Fields should not have public accessibility

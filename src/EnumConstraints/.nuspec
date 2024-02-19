@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 		<id>EnumConstraints.Fody</id>
 		<title>EnumConstraints.Fody</title>
 		<authors>Damien O</authors>
