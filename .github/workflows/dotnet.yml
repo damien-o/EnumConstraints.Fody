@@ -34,7 +34,7 @@ jobs:
     - name: Create code coverage report
       run: |
         dotnet tool install -g dotnet-reportgenerator-globaltool
-        dotnet-coverage merge -f cobertura .\output.coverage
+        dotnet-coverage merge -f cobertura ./output.coverage
         reportgenerator -reports:./output.cobertura.xml -targetdir:./CodeCoverage -reporttypes:'MarkdownSummaryGithub;Cobertura' -verbosity Off -assemblyfilters:'+EnumConstraints.Fody;+EnumConstraints'
         cat ./CodeCoverage/SummaryGithub.md >> $GITHUB_STEP_SUMMARY  
 

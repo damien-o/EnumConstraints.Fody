@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,dotnetcore
 
+
+output.cobertura.xml
+/CodeCoverage
+
 ### DotnetCore ###
 # .NET Core build folders
 bin/
