@@ -2,13 +2,14 @@
 
 
 
-[![NuGet Status](https://img.shields.io/nuget/v/EnumConstraints.Fody.svg)](https://www.nuget.org/packages/EnumConstraints.Fody/)
+[![NuGet Version](https://img.shields.io/nuget/v/EnumConstraints.Fody.svg)](https://www.nuget.org/packages/EnumConstraints.Fody/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/EnumConstraints.Fody)](https://www.nuget.org/packages/EnumConstraints.Fody/)
 [![.net Status](https://github.com/damien-o/EnumConstraints.Fody/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damien-o/EnumConstraints.Fody/actions/)
 [![Activity](https://img.shields.io/github/commit-activity/m/damien-o/EnumConstraints.Fody)](https://github.com/damien-o/EnumConstraints.Fody/pulse/)
 [![Coverage](https://img.shields.io/badge/Code%20Coverage-82%25-success?style=flat)](https://github.com/damien-o/EnumConstraints.Fody/actions/)
+[![Code QL](https://github.com/damien-o/EnumConstraints.Fody/workflows/CodeQL/badge.svg)(https://github.com/damien-o/EnumConstraints.Fody/workflows)
 [![License](https://img.shields.io/github/license/damien-o/EnumConstraints.Fody)](https://github.com/damien-o/EnumConstraints.Fody/blob/main/LICENSE)
 [![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg)](https://gitter.im/Fody/Fody)
-
 
 
 
