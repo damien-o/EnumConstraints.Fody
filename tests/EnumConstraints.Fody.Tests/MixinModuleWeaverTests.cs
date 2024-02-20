@@ -28,6 +28,7 @@ public class MixinModuleWeaverTests : ModuleWeaverBaseTests
     #endregion
 
     #region Auto
+
     [TestMethod]
     public void ValidValueCanBeObtained()
     {
@@ -54,10 +55,13 @@ public class MixinModuleWeaverTests : ModuleWeaverBaseTests
         var sut = GetInstance<Mixin>();
         var result = Assert.ThrowsException<InvalidEnumValueException>(() => sut.Auto);
         result.EnumValue.Should().Be((StatusAsInt64)0);
+        result.EnumType.FullName.Should().Be(typeof(StatusAsInt64).FullName);
     }
+
     #endregion
 
     #region NullableReadonlyGet
+
     [TestMethod]
     public void NullableReadonlyGet_ValidValueCanBeObtained()
     {
@@ -66,9 +70,8 @@ public class MixinModuleWeaverTests : ModuleWeaverBaseTests
     }
     #endregion
 
-
-
     #region NullableAutoReadonlyGet
+
     [TestMethod]
     public void NullableAutoReadonlyGet_ValidValueCanBeObtained()
     {
@@ -95,9 +98,8 @@ public class MixinModuleWeaverTests : ModuleWeaverBaseTests
 
     #endregion
 
-
-
     #region NullableAutoReadonlyGet
+
     [TestMethod]
     public void AutoReadonlyGet_ValidValueCanBeObtained()
     {
@@ -142,6 +144,42 @@ public class MixinModuleWeaverTests : ModuleWeaverBaseTests
             () => sut.UnitializedGetInit
         );
         result.EnumValue.Should().Be((StatusAsInt64)0);
+    }
+    #endregion
+
+    #region SetOnly
+
+
+    [TestMethod]
+    public void SetOnly_ValidValueCanBeObtained()
+    {
+        var sut = GetInstance<Mixin>();
+        sut.SetOnly = StatusAsInt64.Two;
+        Assert.AreEqual(StatusAsInt64.Two, sut.value);
+    }
+
+    [TestMethod]
+    public void SetOnly_PropertyShouldRetainValue()
+    {
+        var sut = GetInstance<Mixin>();
+
+        sut.SetOnly = StatusAsInt64.One;
+        Assert.AreEqual(StatusAsInt64.One, sut.value);
+
+        sut.SetOnly = StatusAsInt64.Two;
+        Assert.AreEqual(StatusAsInt64.Two, sut.value);
+    }
+
+    [TestMethod]
+    public void SetOnly_ShouldThrow_When_SetAnInvalidEnumValue()
+    {
+        var sut = GetInstance<Mixin>();
+
+        var result = Assert.ThrowsException<InvalidEnumValueException>(
+            () => sut.SetOnly = ((StatusAsInt64)(-10))
+        );
+        result.EnumValue.Should().Be((StatusAsInt64)(-10));
+        result.EnumType.FullName.Should().Be(typeof(StatusAsInt64).FullName);
     }
     #endregion
 }

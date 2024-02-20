@@ -1,5 +1,4 @@
-using AssemblyToProcess;
-using AssemblyToProcess.Extensions;
+using System.Xml.Linq;
 using Fody;
 using TestResult = Fody.TestResult;
 
@@ -9,20 +8,29 @@ public class ModuleWeaverBaseTests
 {
     protected ModuleWeaverBaseTests() { }
 
-#if (NET46)
-    protected static readonly TestResult testResult = new ModuleWeaver().ExecuteTestRun(
-        "AssemblyToProcess.dll"
-    );
-#else
-    protected static readonly TestResult testResult = new ModuleWeaver().ExecuteTestRun(
-        "AssemblyToProcess.dll",
-        false
-    );
-#endif
+    [TestInitialize]
+    public void Initilize()
+    {
+        if (testResult is not null)
+            return;
+        var moduleWeaver = new ModuleWeaver();
+        moduleWeaver.Config = (
+            XDocument.Parse(@"<EnumConstraints Properties=""true"" Log=""true""/>").Root!
+        );
 
-    protected static dynamic GetInstance<T>()
+#if (NET46)
+        testResult = moduleWeaver.ExecuteTestRun("AssemblyToProcess.dll");
+#else
+        testResult = moduleWeaver.ExecuteTestRun("AssemblyToProcess.dll", false);
+#endif
+    }
+
+    private static TestResult? testResult;
+
+    protected dynamic GetInstance<T>()
         where T : class
     {
+        ArgumentNullException.ThrowIfNull(testResult);
         return testResult.GetInstance(typeof(T).FullName!)!;
     }
 }

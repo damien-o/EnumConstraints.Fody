@@ -23,14 +23,14 @@ namespace EnumConstraints.Fody
                 throw new TypeLoadException(
                     "Can't find typeDef: EnumConstraints.InvalidEnumValueException"
                 );
-            var type = module.ImportReference(invalidEnumValueExceptionType).Resolve();
-            if (type is null)
-                throw new TypeLoadException(
+            var type =
+                module.ImportReference(invalidEnumValueExceptionType).Resolve()
+                ?? throw new TypeLoadException(
                     "Can't resolve type: EnumConstraints.InvalidEnumValueException"
                 );
-            var method = type.GetMethods().FirstOrDefault(m => m.Name == "ThrowIfInvalid");
-            if (method is null)
-                throw new TypeLoadException(
+            var method =
+                type.GetMethods().FirstOrDefault(m => m.Name == "ThrowIfInvalid")
+                ?? throw new TypeLoadException(
                     "Can't find method: EnumConstraints.InvalidEnumValueException.ThrowIfInvalid"
                 );
             _throwIfInvalid = module.ImportReference(method);
@@ -43,11 +43,9 @@ namespace EnumConstraints.Fody
             PropertyDefinition propertyDefinition
         )
         {
-            if (typeDefinition is null)
+            if (typeDefinition is null || propertyDefinition is null)
                 return;
 
-            if (propertyDefinition is null)
-                return;
             if (!CanOverrideBehavior(propertyDefinition))
             {
                 return;
@@ -176,9 +174,7 @@ namespace EnumConstraints.Fody
             {
                 propertyType = instance.GenericArguments[0].Resolve();
             }
-            if (propertyType is null)
-                return false;
-            if (!propertyType.IsEnum)
+            if (propertyType is null || !propertyType.IsEnum)
                 return false;
 
             if (
