@@ -1,12 +1,18 @@
+using System.Xml.Linq;
 using EnumConstraints.Fody.Tests.Common;
+using Fody;
+using TestResult = Fody.TestResult;
 
-namespace EnumConstraints.Fody.Tests;
+namespace EnumConstraints.Fody.Tests.Configuration;
 
 [TestClass]
-public class NullablePropertyModuleWeaverTests : ModuleWeaverBaseTests
+public class NoLogModuleWeaverTests : ModuleWeaverBaseTests
 {
+    public NoLogModuleWeaverTests()
+        : base(true, false) { }
+
     [TestMethod]
-    public void ValidValueCanBeObtained()
+    public void Config_ValidValueCanBeObtained()
     {
         var sut = GetInstance<AutoProperty>();
         sut.NullableByteAutoProperty = StatusAsInt64.One;
@@ -14,7 +20,7 @@ public class NullablePropertyModuleWeaverTests : ModuleWeaverBaseTests
     }
 
     [TestMethod]
-    public void PropertyShouldRetainValue()
+    public void Config_PropertyShouldRetainValue()
     {
         var sut = GetInstance<AutoProperty>();
 
@@ -26,7 +32,7 @@ public class NullablePropertyModuleWeaverTests : ModuleWeaverBaseTests
     }
 
     [TestMethod]
-    public void ShouldThrow_When_GetAnInvalidEnumValue()
+    public void Config_ShouldThrow_When_GetAnInvalidEnumValue()
     {
         var sut = GetInstance<AutoProperty>();
         var sutObject = (object)sut;

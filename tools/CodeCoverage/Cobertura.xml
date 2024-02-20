@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.9281767955801105" branch-rate="1" lines-covered="168" lines-valid="181" branches-covered="0" branches-valid="0" complexity="12" version="0" timestamp="1708472044">
+<coverage line-rate="0.9725274725274725" branch-rate="1" lines-covered="177" lines-valid="182" branches-covered="0" branches-valid="0" complexity="12" version="0" timestamp="1708477010">
   <sources />
   <packages>
     <package name="EnumConstraints" line-rate="1" branch-rate="1" complexity="4">
@@ -57,9 +57,9 @@
         </class>
       </classes>
     </package>
-    <package name="EnumConstraints.Fody" line-rate="0.9221556886227545" branch-rate="1" complexity="8">
+    <package name="EnumConstraints.Fody" line-rate="0.9702380952380952" branch-rate="1" complexity="8">
       <classes>
-        <class name="EnumConstraints.Fody.ClassProcessor" filename="D:\projects\github\EnumConstraints.Fody\src\EnumConstraints.Fody\ClassProcessor.cs" line-rate="0.9545454545454546" branch-rate="1" complexity="5">
+        <class name="EnumConstraints.Fody.ClassProcessor" filename="D:\projects\github\EnumConstraints.Fody\src\EnumConstraints.Fody\ClassProcessor.cs" line-rate="0.9621212121212122" branch-rate="1" complexity="5">
           <methods>
             <method name="ClassProcessor" signature="(EnumConstraints.Fody.ModuleWeaver, bool, Mono.Cecil.ModuleDefinition, Mono.Cecil.TypeDefinition)" line-rate="0.88" branch-rate="1" complexity="1">
               <lines>
@@ -90,7 +90,7 @@
                 <line number="39" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="ProcessProperties" signature="(Mono.Cecil.TypeDefinition, Mono.Cecil.PropertyDefinition)" line-rate="0.9411764705882353" branch-rate="1" complexity="1">
+            <method name="ProcessProperties" signature="(Mono.Cecil.TypeDefinition, Mono.Cecil.PropertyDefinition)" line-rate="0.9705882352941176" branch-rate="1" complexity="1">
               <lines>
                 <line number="45" hits="1" branch="false" />
                 <line number="46" hits="1" branch="false" />
@@ -111,7 +111,7 @@
                 <line number="63" hits="1" branch="false" />
                 <line number="64" hits="1" branch="false" />
                 <line number="65" hits="1" branch="false" />
-                <line number="66" hits="0" branch="false" />
+                <line number="66" hits="1" branch="false" />
                 <line number="68" hits="1" branch="false" />
                 <line number="69" hits="1" branch="false" />
                 <line number="70" hits="1" branch="false" />
@@ -259,7 +259,7 @@
             <line number="63" hits="1" branch="false" />
             <line number="64" hits="1" branch="false" />
             <line number="65" hits="1" branch="false" />
-            <line number="66" hits="0" branch="false" />
+            <line number="66" hits="1" branch="false" />
             <line number="68" hits="1" branch="false" />
             <line number="69" hits="1" branch="false" />
             <line number="70" hits="1" branch="false" />
@@ -349,22 +349,21 @@
             <line number="188" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="EnumConstraints.Fody.ModuleWeaver" filename="D:\projects\github\EnumConstraints.Fody\src\EnumConstraints.Fody\ModuleWeaver.cs" line-rate="0.8" branch-rate="1" complexity="3">
+        <class name="EnumConstraints.Fody.ModuleWeaver" filename="D:\projects\github\EnumConstraints.Fody\src\EnumConstraints.Fody\ModuleWeaver.cs" line-rate="1" branch-rate="1" complexity="3">
           <methods>
-            <method name="Execute" signature="()" line-rate="0.7741935483870968" branch-rate="1" complexity="1">
+            <method name="Execute" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="12" hits="1" branch="false" />
                 <line number="13" hits="1" branch="false" />
-                <line number="14" hits="1" branch="false" />
                 <line number="15" hits="1" branch="false" />
-                <line number="16" hits="0" branch="false" />
+                <line number="16" hits="1" branch="false" />
                 <line number="18" hits="1" branch="false" />
                 <line number="19" hits="1" branch="false" />
                 <line number="20" hits="1" branch="false" />
                 <line number="21" hits="1" branch="false" />
+                <line number="22" hits="1" branch="false" />
                 <line number="23" hits="1" branch="false" />
                 <line number="25" hits="1" branch="false" />
-                <line number="26" hits="1" branch="false" />
                 <line number="27" hits="1" branch="false" />
                 <line number="28" hits="1" branch="false" />
                 <line number="29" hits="1" branch="false" />
@@ -377,41 +376,42 @@
                 <line number="36" hits="1" branch="false" />
                 <line number="37" hits="1" branch="false" />
                 <line number="38" hits="1" branch="false" />
-                <line number="39" hits="0" branch="false" />
-                <line number="40" hits="0" branch="false" />
-                <line number="41" hits="0" branch="false" />
-                <line number="42" hits="0" branch="false" />
-                <line number="43" hits="0" branch="false" />
-                <line number="44" hits="0" branch="false" />
+                <line number="39" hits="1" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="41" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
+                <line number="43" hits="1" branch="false" />
+                <line number="44" hits="1" branch="false" />
                 <line number="45" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="47" hits="1" branch="false" />
               </lines>
             </method>
             <method name="get_ShouldCleanReference" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="47" hits="1" branch="false" />
+                <line number="49" hits="1" branch="false" />
               </lines>
             </method>
             <method name="GetAssembliesForScanning" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="50" hits="1" branch="false" />
-                <line number="51" hits="1" branch="false" />
                 <line number="52" hits="1" branch="false" />
+                <line number="53" hits="1" branch="false" />
+                <line number="54" hits="1" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
             <line number="12" hits="1" branch="false" />
             <line number="13" hits="1" branch="false" />
-            <line number="14" hits="1" branch="false" />
             <line number="15" hits="1" branch="false" />
-            <line number="16" hits="0" branch="false" />
+            <line number="16" hits="1" branch="false" />
             <line number="18" hits="1" branch="false" />
             <line number="19" hits="1" branch="false" />
             <line number="20" hits="1" branch="false" />
             <line number="21" hits="1" branch="false" />
+            <line number="22" hits="1" branch="false" />
             <line number="23" hits="1" branch="false" />
             <line number="25" hits="1" branch="false" />
-            <line number="26" hits="1" branch="false" />
             <line number="27" hits="1" branch="false" />
             <line number="28" hits="1" branch="false" />
             <line number="29" hits="1" branch="false" />
@@ -424,17 +424,19 @@
             <line number="36" hits="1" branch="false" />
             <line number="37" hits="1" branch="false" />
             <line number="38" hits="1" branch="false" />
-            <line number="39" hits="0" branch="false" />
-            <line number="40" hits="0" branch="false" />
-            <line number="41" hits="0" branch="false" />
-            <line number="42" hits="0" branch="false" />
-            <line number="43" hits="0" branch="false" />
-            <line number="44" hits="0" branch="false" />
+            <line number="39" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="41" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
+            <line number="43" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
             <line number="45" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
             <line number="47" hits="1" branch="false" />
-            <line number="50" hits="1" branch="false" />
-            <line number="51" hits="1" branch="false" />
+            <line number="49" hits="1" branch="false" />
             <line number="52" hits="1" branch="false" />
+            <line number="53" hits="1" branch="false" />
+            <line number="54" hits="1" branch="false" />
           </lines>
         </class>
       </classes>

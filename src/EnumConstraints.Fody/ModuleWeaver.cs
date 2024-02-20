@@ -10,12 +10,14 @@ namespace EnumConstraints.Fody
     {
         public override void Execute()
         {
-            var properties = bool.Parse(Config?.Attribute("Properties")?.Value ?? "true");
-            var log = bool.Parse(Config?.Attribute("Log")?.Value ?? "false");
-            if (!properties)
-                return;
+            bool log = false;
             try
             {
+                log = bool.Parse(Config?.Attribute("Log")?.Value ?? "false");
+
+                var properties = bool.Parse(Config?.Attribute("Properties")?.Value ?? "true");
+                if (!properties)
+                    return;
                 var invalidEnumValueExceptionType = FindTypeDefinition(
                     "EnumConstraints.InvalidEnumValueException"
                 );

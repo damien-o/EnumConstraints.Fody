@@ -1,3 +1,5 @@
+using EnumConstraints.Fody.Tests.Common;
+
 namespace EnumConstraints.Fody.Tests;
 
 [TestClass]

@@ -3,16 +3,16 @@
 
 |||
 |:---|:---|
-| Generated on: | 20/02/2024 - 23:34:04 |
+| Generated on: | 21/02/2024 - 00:56:50 |
 | Parser: | Cobertura |
 | Assemblies: | 2 |
 | Classes: | 3 |
 | Files: | 3 |
-| **Line coverage:** | 92.8% (168 of 181) |
-| Covered lines: | 168 |
-| Uncovered lines: | 13 |
-| Coverable lines: | 181 |
-| Total lines: | 290 |
+| **Line coverage:** | 97.2% (177 of 182) |
+| Covered lines: | 177 |
+| Uncovered lines: | 5 |
+| Coverable lines: | 182 |
+| Total lines: | 291 |
 | Covered branches: | 0 |
 | Total branches: | 0 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
@@ -28,12 +28,12 @@
 |EnumConstraints.InvalidEnumValueException|100%||
 
 </details>
-<details><summary>EnumConstraints.Fody - 92.2%</summary>
+<details><summary>EnumConstraints.Fody - 97%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**EnumConstraints.Fody**|**92.2%**|****|
-|EnumConstraints.Fody.ClassProcessor|95.4%||
-|EnumConstraints.Fody.ModuleWeaver|80%||
+|**EnumConstraints.Fody**|**97%**|****|
+|EnumConstraints.Fody.ClassProcessor|96.2%||
+|EnumConstraints.Fody.ModuleWeaver|100%||
 
 </details>
