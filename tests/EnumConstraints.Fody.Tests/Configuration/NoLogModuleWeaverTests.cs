@@ -1,7 +1,4 @@
-using System.Xml.Linq;
 using EnumConstraints.Fody.Tests.Common;
-using Fody;
-using TestResult = Fody.TestResult;
 
 namespace EnumConstraints.Fody.Tests.Configuration;
 

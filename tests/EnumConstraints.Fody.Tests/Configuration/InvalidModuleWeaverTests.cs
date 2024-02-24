@@ -1,6 +1,3 @@
-using System.Reflection;
-using System.Resources;
-using System.Xml.Linq;
 using EnumConstraints.Fody.Tests.Common;
 
 namespace EnumConstraints.Fody.Tests.Configuration;
